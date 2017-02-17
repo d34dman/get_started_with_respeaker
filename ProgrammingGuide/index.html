@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="D34dMan">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Programming guide - Respeaker - Getting Started</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Programming guide";
+    var mkdocs_page_input_path = "ProgrammingGuide.md";
+    var mkdocs_page_url = "/ProgrammingGuide/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Respeaker - Getting Started</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Introduction/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../QuickStart/">Quick Start</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Programming guide</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#programming-guide">Programming Guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#how-to-write-a-simple-voice-interaction-program">How to write a simple voice interaction program</a></li>
+                
+                    <li><a class="toctree-l4" href="#play-arduino-with-light-touch-sound-and-internet">Play Arduino with light, touch, sound and Internet</a></li>
+                
+                    <li><a class="toctree-l4" href="#data-exchange-between-arduino-and-openwrt">Data exchange between Arduino and OpenWrt</a></li>
+                
+                    <li><a class="toctree-l4" href="#fruit-piano">Fruit piano</a></li>
+                
+                    <li><a class="toctree-l4" href="#weather-cloud">Weather Cloud</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ReSpeakerArduinoLibrary/">ReSpeaker Arduino Library</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ReSpeakerPythonAPI/">ReSpeaker Python API</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Respeaker - Getting Started</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Programming guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/d34dman/get_started_with_respeaker.git/edit/master/ProgrammingGuide.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="programming-guide">Programming Guide</h1>
+<p>This programming guide is a series of tutorials designed to get you started with ReSpeaker. Starting from the basics, it describes how to make voice interaction, create audio output and program Arduino on ReSpeaker.</p>
+<p>ReSpeaker runs the <a href="https://openwrt.org/">OpenWrt</a> system on MT7688, and provided with on broad <a href="https://github.com/respeaker/respeaker_python_library">ReSpeaker Python API</a>, which makes it friendly and quickly for developers to build IoT applications. On Arduino side, ReSpeaker also provide easy-to-use <a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a>.</p>
+<h2 id="how-to-write-a-simple-voice-interaction-program">How to write a simple voice interaction program</h2>
+<p>With Bing Speech API, ReSpeaker can turn on and recognize audio coming from the microphone in real-time, or recognize audio from a file. </p>
+<p>To use Bing Speech API, first you have to get a key of Microsoft Cognitive Services from <a href="https://www.microsoft.com/cognitive-services/en-us/speech-api">here</a>, and copy it to <code>BING_KEY = ''</code>, then save the following code in <code>bing.py</code> and run it <code>python bing.py</code></p>
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/getbingapi.png?raw=true" width="50%" height="50%">
+</div>
+
+<p>The following code is an example of how to use Bing Speech API and Microphone on ReSpeaker. After waking up ReSpeaker by saying "ReSpeaker" to the board, the code will start to record your voice, translate it to text and display it.</p>
+<pre><code class="python">import logging
+import time
+from threading import Thread, Event
+from respeaker import Microphone
+from respeaker.bing_speech_api import BingSpeechAPI
+
+
+# get a key from https://www.microsoft.com/cognitive-services/en-us/speech-api
+BING_KEY = ''      
+
+
+def task(quit_event):                                                         
+    mic = Microphone(quit_event=quit_event)                                   
+    bing = BingSpeechAPI(key=BING_KEY)                                        
+
+    while not quit_event.is_set():
+        if mic.wakeup('respeaker'):        
+            print('Wake up')               
+            data = mic.listen()            
+            try:                      
+                text = bing.recognize(data)
+                if text:           
+                    print('Recognized %s' % text)
+            except Exception as e:               
+                print(e.message)                 
+
+def main():                                                              
+    logging.basicConfig(level=logging.DEBUG)                                                           
+    quit_event = Event()        
+    thread = Thread(target=task, args=(quit_event,))
+    thread.start()                          
+    while True:                             
+        try:                                
+            time.sleep(1)                           
+        except KeyboardInterrupt:                   
+            print('Quit')                           
+            quit_event.set()
+            break        
+    thread.join()                
+
+if __name__ == '__main__':       
+    main()                  
+</code></pre>
+
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/voiceinteraction.png?raw=true" width="50%" height="50%">
+</div>
+
+<h2 id="play-arduino-with-light-touch-sound-and-internet">Play Arduino with light, touch, sound and Internet</h2>
+<p><a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a> is a library for controlling WS2812 RGB LEDs, touch sensors, SeeedStudio Grove modules on Arduino (ATmega32U4) and building communication bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688).</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Supported capacitive touch sensing</li>
+<li>Implemented WS2812 RGB LED driver</li>
+<li>Built USB to Serial bridge and SPI bridge between Arduino (ATmega32U4) and linux based OpenWrt (MT7688)</li>
+</ul>
+<h3 id="requirements">Requirements</h3>
+<ul>
+<li>Arduino IDE 1.6.8+. Please use Arduino IDE 1.6.8+ which has some useful new features</li>
+</ul>
+<h3 id="installation">Installation</h3>
+<ol>
+<li>Download <a href="https://github.com/respeaker/respeaker_arduino_library/archive/master.zip">zip file</a> and extract it into Arduino's libraries directory.</li>
+<li>Rename <code>respeaker_arduino_library-master</code> to <code>respeaker</code></li>
+<li>Select <code>Tools-&gt;Board-&gt;Arduino Leonardo</code> </li>
+</ol>
+<h3 id="getting-started">Getting Started</h3>
+<ol>
+<li>Light - chasing colors</li>
+</ol>
+<p>```C
+  #include "respeaker.h"</p>
+<p>uint8_t offset = 0;</p>
+<p>void setup() {
+    respeaker.begin();
+    respeaker.pixels().set_brightness(128);      // set brightness level (from 0 to 255)
+  }</p>
+<p>void loop() {
+    respeaker.pixels().rainbow(offset++);
+    delay(10);
+  }
+  ```</p>
+<ol>
+<li>Touch &amp; Sound - touch to play</li>
+</ol>
+<p>```C
+  #include "respeaker.h"</p>
+<p>// wav or mp3 files on SD card
+  const char *sound_map[] = {"a1.wav", "b1.wav", "c1.wav", "d1.wav", "e1.wav", "f1.wav", "g1.wav", "c2.wav"};</p>
+<p>void setup() {
+    respeaker.begin();
+    respeaker.attach_touch_handler(touch_event);  // add touch event handler
+  }
+  void loop() {}</p>
+<p>// id: 0 ~ 7 - touch sensor id; event: 1 - touch, 0 - release
+  void touch_event(uint8_t id, uint8_t event) {
+    if (event) {
+      respeaker.play(sound_map[id]);
+    }
+  }
+  ```</p>
+<ol>
+<li><a href="https://ifttt.com/maker">Connect to IFTTT maker channel</a></li>
+</ol>
+<p>```C
+  #include "respeaker.h"</p>
+<p>#define IFTTT_MAKER_CHANNEL_KEY ""              // add the key of your ifttt maker channel
+  #define EVENT                   "ping"</p>
+<p>const char *ifttt_ping = "curl -X POST https://maker.ifttt.com/trigger/" EVENT "/with/key/" IFTTT_MAKER_CHANNEL_KEY;</p>
+<p>void setup() {
+    respeaker.begin();
+    respeaker.attach_touch_handler(touch_event);  // add touch event handler
+  }
+  void loop() {}</p>
+<p>// id: 0 ~ 7 - touch sensor id; event: 1 - touch, 0 - release
+  void touch_event(uint8_t id, uint8_t event) {
+    if (event == 1 &amp;&amp; id == 0) {
+      respeaker.exec(ifttt_ping);
+    }
+  }
+  ```</p>
+<h2 id="data-exchange-between-arduino-and-openwrt">Data exchange between Arduino and OpenWrt</h2>
+<p>There are 2 data exchange ways between Arduino and OpenWrt: UART and SPI bridge. </p>
+<h3 id="spi-bridge">SPI bridge</h3>
+<p>With SPI bridge, OpenWrt works as master and Arduino works as salve. </p>
+<p>On Arduino side, the SPI data will be received in this SPI interrupt handler.</p>
+<pre><code class="C">void spi_event(uint8_t addr, uint8_t *data, uint8_t len)  {
+    //handle the data sent from MT7688
+}
+</code></pre>
+
+<ul>
+<li><strong>uint8_t addr</strong> - the address of SPI</li>
+<li><strong>uint8_t *data</strong> - the received data, it is a character array</li>
+<li><strong>uint8_t len</strong> - the length of the received data</li>
+</ul>
+<p>In <a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a>, we have an
+<a href="https://github.com/respeaker/respeaker_arduino_library/blob/master/examples/pixels_pattern/pixels_pattern.ino">example</a> of SPI bridge:</p>
+<pre><code class="C">void spi_event(uint8_t addr, uint8_t *data, uint8_t len)
+{
+  if (0 == addr) {
+    if (0 == data[0]) {   // all off
+      color = 0x000000;
+      pixels_state = 0;
+    } else if (1 == data[0]) {  // specific color
+      color = Pixels::RGB(data[1], data[2], data[3]);
+      pixels_state = 0;
+    } else if (2 == data[0] || 7 == data[0]) {    // listening mode, all green
+      color = Pixels::RGB(0, 0x40, 0);
+      pixels_state = 0;
+    } else if (3 == data[0]) {    // waiting mode
+      pixels_state = 1;
+    }  else if (4 == data[0]) {   // speaking mode
+      pixels_state = 2;
+    } else if (5 == data[0]) {    // volume mode
+      pixels_state = 3;
+      volume = data[3];
+      volume_changed_time = 0;
+    }
+  } else if (0xA0 == addr) {       // spectrum data
+    pixels_state = -1;
+    for (int i = 0; i &lt; PIXELS_NUM; i++) {
+      // Serial.print(data[i]);
+      // Serial.print(' ');
+      pixels-&gt;set_color(i, change_brightness(b2r(i * 255 / (PIXELS_NUM - 1)), data[i]));
+      // pixels-&gt;set_color(i, change_brightness(b2r(data[i]), data[i]));
+    }
+    pixels-&gt;update();
+    // Serial.print(&quot;\r\n&quot;);
+  }
+}
+</code></pre>
+
+<p><em>Note: Please stop mopidy service on OpenWrt before using SPI bridge</em></p>
+<pre><code>/etc/init.d/mopidy stop
+</code></pre>
+
+<p>On OpenWrt side, there is a spi instantiation in "respeaker" package. Import it from "respeaker", and send data with  <code>spi.write(self, data=None, address=None)</code> method. </p>
+<pre><code class="python"> def write(self, data=None, address=None):
+            if address is not None:
+                data = bytearray([0xA5, address &amp; 0xFF, len(data) &amp; 0xFF]) + data + bytearray([crc8(data)])
+                response = self._write(data)[3:-1]
+            else:
+                response = self._write(data)
+
+            return response
+</code></pre>
+
+<ul>
+<li><strong>data</strong> - the data sent to Arduino, it should be a bytearray</li>
+<li><strong>address</strong> - the address of SPI</li>
+</ul>
+<pre><code class="python">from respeaker import spi
+//send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.
+spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+</code></pre>
+
+<h3 id="uart">UART</h3>
+<p>There are 2 serial ports available in ATmage32U4: "serial" and "serial1". The "serial" is sumilated by the USB port shared with MT7688 and the "serial1" (on TXD1 and RXD1) is connected to MT7688 (on UART_RXD2 and UART_TXD2). They have been set their baudrate to 57600 bps in respeaker.begin().</p>
+<pre><code class="C++">void ReSpeaker::begin(int touch, int pixels, int spi)
+{
+    Serial.begin(57600);
+    Serial1.begin(57600);
+    ......
+}
+</code></pre>
+
+<p><a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a> provides 2 menthods to send Linux command to Openwrt Shell directly.</p>
+<pre><code class="C++">void ReSpeaker::play(const char *name)
+{
+    Serial1.print(&quot;play &quot;);
+    Serial1.print(name);
+    Serial1.print('\n');
+}
+</code></pre>
+
+<p>Send a play-music command to OpenWrt shell</p>
+<ul>
+<li><strong>const char *name</strong> - the absolute path or SD card path of your music file</li>
+</ul>
+<pre><code class="C++">void ReSpeaker::exec(const char *cmd)
+{
+    Serial1.print(cmd);
+    Serial1.print('\n');
+}
+</code></pre>
+
+<p>Send a Linux shell command line to OpenWrt Shell</p>
+<ul>
+<li><strong>const char *cmd</strong> - Linux shell command line</li>
+</ul>
+<h2 id="fruit-piano">Fruit piano</h2>
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano.PNG?raw=true" width="50%" height="50%">
+</div>
+
+<p>Rather than the on board MT7688 Wi-FI module which runs the Linux based OpenWrt, ReSpeaker is also powered by the ATmega32u4 chip and it’s absolutely Arduino compatible, which means, we can use ReSpeaker as a powerful Arduino board and do many ‘Arduino’ things. It’s for learning, it’s for practicing, and it’s for fun.</p>
+<p>For example, you can program it with Arduino IDE to have a special DIY piano that is built on 8 cherry tomatoes connecting to the 8 touch sensors of ReSpeaker.</p>
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/fruitpiano2.PNG?raw=true" width="50%" height="50%">
+</div>
+
+<h3 id="getting-started_1">Getting Started</h3>
+<ol>
+<li><code>git clone https://github.com/respeaker/piano.git</code>  On ReSpeaker, download the repository </li>
+<li>Download <a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a> in your computer</li>
+<li>Upload <a href="https://github.com/respeaker/piano/blob/master/arduino/piano.ino">piano.ino</a> to ReSpeaker's Arduino Leonardo (ATmega32U4)</li>
+<li>Run <code>python piano.py</code> on ReSpeaker's serial console</li>
+</ol>
+<h2 id="weather-cloud">Weather Cloud</h2>
+<div class="text-center">
+<img src="https://github.com/respeaker/get_started_with_respeaker/blob/master/img/weathercloud.jpg?raw=true" width="50%" height="50%">
+</div>
+
+<p>Weather Cloud is an awesome project for ReSpeaker. This cool build turns a ReSpeaker into a Weather Cloud, which is able to show you the whether with vivid light and sounds.</p>
+<p>In this project, Openwrt is in charge of getting realtime weather information from the Internet, making voice interaction and audio output, while Arduino is responsible for controlling the colorful RGB LEDs.</p>
+<h3 id="getting-started_2">Getting started</h3>
+<ol>
+<li><code>git clone https://github.com/jerryyip/WeatherCloud.git</code>  on ReSpeaker, download the repository </li>
+<li>Download <a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arduino Library</a> in your computer</li>
+<li>Upload <a href="https://github.com/respeaker/respeaker_arduino_library/blob/master/examples/pixels_pattern/pixels_pattern.ino">pixels_pattern.ino</a> in ReSpeaker Arduino  Library to ReSpeaker's Arduino </li>
+<li>Get OpenWeatherMap appid from <a href="http://openweathermap.org/appid">here</a> and copy it to <code>appID = ""</code> in <code>main.py</code>, don't forget to add your city in <code>city=""</code></li>
+<li>Stop mopidy service on OpenWrt before using SPI bridge
+<code>/etc/init.d/mopidy stop</code></li>
+<li>Run <code>python main.py</code> and say "ReSpeaker, what is the weather like?" to ReSpeaker.</li>
+<li>For more details about how to make a Weather Could, please click <a href="http://www.instructables.com/id/How-to-DIY-an-in-House-Weather-telling-Cloud/">here</a>.</li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ReSpeakerArduinoLibrary/" class="btn btn-neutral float-right" title="ReSpeaker Arduino Library">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../QuickStart/" class="btn btn-neutral" title="Quick Start"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>© 2017 Digitwings, India</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/d34dman/get_started_with_respeaker.git" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../QuickStart/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ReSpeakerArduinoLibrary/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

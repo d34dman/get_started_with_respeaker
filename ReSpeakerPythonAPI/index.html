@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="D34dMan">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ReSpeaker Python API - Respeaker - Getting Started</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ReSpeaker Python API";
+    var mkdocs_page_input_path = "ReSpeakerPythonAPI.md";
+    var mkdocs_page_url = "/ReSpeakerPythonAPI/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Respeaker - Getting Started</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Introduction/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../QuickStart/">Quick Start</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ProgrammingGuide/">Programming guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ReSpeakerArduinoLibrary/">ReSpeaker Arduino Library</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ReSpeaker Python API</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#respeaker-python-api">ReSpeaker Python API</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-bingspeechapi">class BingSpeechAPI</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_1">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_2">Example usage</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-microphone">class Microphone</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_3">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_4">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#send-data-1-0-0-50-to-arduino-which-will-make-the-leds-turn-blue">send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-pixelring">class PixelRing</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_5">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_6">Example usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#example-usage_7">Example usage</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Respeaker - Getting Started</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ReSpeaker Python API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/d34dman/get_started_with_respeaker.git/edit/master/ReSpeakerPythonAPI.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="respeaker-python-api">ReSpeaker Python API</h1>
+<p><a href="https://github.com/respeaker/respeaker_python_library">ReSpeaker Python Library</a> is an open source python library to provide functions of voice interaction for ReSpeaker.</p>
+<h2 id="class-bingspeechapi">class BingSpeechAPI</h2>
+<p>Provides methods to:</p>
+<ol>
+<li>Initialize BingSpeechAPI</li>
+<li>Apply Bing Speech API access token</li>
+<li>Realize speech to text and text to speech</li>
+<li>
+<p>Generate the WAV header and the WAV file contents</p>
+</li>
+<li>
+<p><strong>def __init__(self, key):</strong></p>
+<p>Initialize BingSpeechAPI.</p>
+<p>```python</p>
+<h1 id="example-usage">Example usage</h1>
+<p>BING_KEY = ''
+bing = BingSpeechAPI(key=BING_KEY)</p>
+</li>
+</ol>
+<pre><code>
+- **def recognize(self, audio\_data, language=&quot;en-US&quot;, show_all=False):**
+
+    Translate the audio data to text by sending it to Bing Speech API.
+
+    - **Parameters:**
+
+        *audio\_data* - the audio frames
+
+        *language* - the language of the audio data translating into, defaults to &quot;en-US&quot;
+
+        *show\_all* - whether the entire JSON should be returned, defaults to False
+
+    - **Return:** a JSON containing the hander and lexical
+
+    - **Raise RequestError:** if recognition connection failed
+
+    ```python
+    #Example usage
+
+    try:
+        text = bing.recognize(data)
+        if text:
+            print('Recognized %s' % text)
+    except Exception as e:
+        print(e.message)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def synthesize(self, text, language="en-US", gender="Female"):</strong></p>
+<p>Synthesize text to audio data by sending it to Bing Speech API.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>text</em> - an instance of the String object.</p>
+<p><em>language</em> - the language of the text, supported languages are listed among <a href="https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/bing_speech_api.py"><em>self.locales</em></a></p>
+<p><em>gender</em> - the text to speech voice </p>
+</li>
+<li>
+<p><strong>Return:</strong> raw audio data</p>
+</li>
+<li>
+<p><strong>Raise LocaleError:</strong> if <em>language</em> not in <a href="https://github.com/respeaker/respeaker_python_library/blob/master/respeaker/bing_speech_api.py"><em>self.locales</em></a></p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_1">Example usage</h1>
+<p>if spoken_text:
+    audio = bing.synthesize(spoken_text)
+    player.play_raw(audio)</p>
+</li>
+</ul>
+<pre><code>
+- **def authenticate(self):**
+
+    Apply access token from Bing Speech API. Every call to the Speech API requires a JSON Web Token (JWT) access token and the token has a expire time of 10 minutes.
+
+    It is called by **self.recognize()** and **self.synthesize()**.
+    - **Parameters:**
+
+        *self.access\_token* - access token from Bing Speech API 
+
+    - **Raise RequestError:** if recognition connection failed
+
+
+- **@staticmethod**
+
+    **def to\_wav(raw\_data):**
+
+    Generate the WAV file contents with raw audio data.
+
+    It is called by **self.recognize()**.
+
+    - **Parameters:**
+
+        *raw\_data* - raw audio data
+
+    - **Return:** WAV data
+
+
+- **@staticmethod**
+
+    **def get\_wav\_header():**
+
+    Generate the WAV header. 
+
+    It is called by **self.recognize()**.
+
+    - **Return:** WAV header
+
+
+##class Player
+
+Based on [PyAudio](https://people.csail.mit.edu/hubert/pyaudio/docs/) and [wave](https://docs.python.org/2/library/wave.html), provides methods to:
+
+1. Initialize Player
+2. Play wav file and raw audio data file.
+
+- **def \_\_init\_\_(self, pa):**
+
+    Initialize Player.
+
+    - **Parameters:**
+
+        *pa* - PyAudio instance
+
+    ```python
+    #Example usage
+    mic = Microphone()
+   player = Player(mic.pyaudio_instance)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def play(self, wav_file, block=True):</strong></p>
+<p>Play wav audio file.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>wav_file</em> - wav file</p>
+<p><em>block</em> - whether wait for playing audio data in buffer, defaults to True</p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_2">Example usage</h1>
+<p>script_dir = os.path.dirname(os.path.realpath(<strong>file</strong>))
+hi = os.path.join(script_dir, 'audio/hi.wav')
+player.play(hi)</p>
+</li>
+</ul>
+<pre><code>
+
+- **def play\_raw(self, raw\_data, rate=16000, channels=1, width=2, block=True):**
+
+    Play raw audio file.
+
+    - **Parameters:**
+
+        *raw\_data* - raw audio data file
+
+        *block* - whether wait for playing audio data in buffer, defaults to True
+
+    ```python
+    #Example usage  
+    if spoken_text:
+        audio = bing.synthesize(spoken_text)
+        player.play_raw(audio)      
+</code></pre>
+
+<h2 id="class-microphone">class Microphone</h2>
+<p>Provides methods to:</p>
+<ol>
+<li>Initialize Microphone</li>
+<li>Translate raw audio data into text</li>
+<li>Wake up ReSpeaker with keyword</li>
+<li>
+<p>Listen and record the speech</p>
+</li>
+<li>
+<p><strong>def __init__(self, pyaudio_instance=None, quit_event=None):</strong></p>
+<p>Initialize Microphone.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>pyaudio_instance</em> - PyAudio instance, defaults to None </p>
+<p><em>quit_event</em> - if quit_event is set, defaults to None</p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_3">Example usage</h1>
+<p>mic = Microphone()  </p>
+</li>
+</ol>
+<pre><code>
+- **def recognize(self, data):**
+
+    Translate raw audio data into text with [PocketSphinx](https://github.com/cmusphinx/pocketsphinx).
+
+    - **Parameters:**
+
+        *data* - raw audio data
+
+    - **Return:** string
+
+    ```python
+    #Example usage  
+    data = mic.listen()
+    text = mic.recognize(data)
+    if text:
+        time.sleep(1)
+        print('Recognized %s' % text) 
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def detect(self, keyword=None):</strong></p>
+<p><strong>def wakeup(self, keyword=None):</strong></p>
+<p><code>detect</code> and <code>wakeup</code> are used to wake up ReSpeaker when the keyword is detected.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>keyword</em> - the keyword to wake up ReSpeaker </p>
+</li>
+<li>
+<p><strong>Return:</strong> if the keyword is detected, return the keyword; if not, return None.</p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_4">Example usage</h1>
+<p>if mic.wakeup('respeaker'):
+    print('wake up')
+    data = mic.listen()
+    text = mic.recognize(data)
+    if text:
+        time.sleep(1)
+        print('Recognized %s' % text) </p>
+</li>
+</ul>
+<pre><code>
+
+- **def listen(self, duration=9, timeout=3):**
+
+    Listen and record the speech.
+
+    - **Parameters:**
+
+        *duration* - listen the speech for the given number of seconds, defaults to 9 seconds
+
+        *timeout* - stop listening when don't detect any speeches for the given number of seconds, defaults to 3 seconds
+
+    - **Return:** raw audio data
+
+    ```python
+    #Example usage  
+    if mic.wakeup('respeaker'):
+        print('wake up')
+        data = mic.listen()
+        text = mic.recognize(data)
+        if text:
+            time.sleep(1)
+            print('Recognized %s' % text) 
+    ```
+
+- **def record(self, file_name, seconds=1800):**
+
+    Record the speech and save the audio file.
+
+    - **Parameters:**
+
+        *file_name* - file name of the saved audio file
+
+        *seconds* - recording seconds, defaults to 1800 seconds 
+
+
+- **def start(self):**
+
+    Start processing the audio stream.
+
+- **def stop(self):**
+
+    Pause playing/recording.
+
+- **def close(self):**
+
+    Terminate the stream.
+
+- **def task(quit_event):**
+
+    An example of a wakeup and recognize task.
+
+    ```python
+    #Example usage  
+    q = Event()
+    t = Thread(target=task, args=(q,))
+    t.start()
+    while True:
+        try:
+            time.sleep(1)
+        except KeyboardInterrupt:
+        print('Quit')
+        q.set()
+            break
+    t.join()
+    ```
+
+
+##class SPI
+
+Provides methods to:
+
+1. Initialize SPI
+2. Send data to Arduino via SPI
+
+- **def \_\_init\_\_(self, sck=15, mosi=17, miso=16, cs=14):**
+
+    Initialize SPI. Note that class SPI has been instantiated in spi.py, so don't have to initialize it again.
+
+    ```python
+    #Example usage
+    from respeaker import spi
+    spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def write(self, data=None, address=None):</strong></p>
+<p>Send data to Arduino. Click this <a href="../ProgrammingGuide/#data-exchange-between-arduino-and-openwrt">Data exchange between Arduino and OpenWrt</a> for more introduction.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>data</em> - the data sent to Arduino, it should be a bytearray</p>
+<p><em>address</em> - the address of SPI</p>
+</li>
+</ul>
+<p>```python
+from respeaker import spi</p>
+<h1 id="send-data-1-0-0-50-to-arduino-which-will-make-the-leds-turn-blue">send data [1, 0, 0, 50] to Arduino, which will make the leds turn blue.</h1>
+<p>spi.write(data = bytearray([1, 0, 0, 50]), address = 0x00)
+```</p>
+</li>
+</ul>
+<h2 id="class-pixelring">class PixelRing</h2>
+<p>Depends on <code>class SPI</code>, provides methods to:</p>
+<ol>
+<li>Initialize PixelRing</li>
+<li>Set pixel leds to <code>off``listen``wait</code> modes</li>
+<li>
+<p>Set specific color to pixel leds </p>
+</li>
+<li>
+<p><strong>def __init__(self):</strong></p>
+<p>Initialize PixelRing. Note that class PixelRing has been instantiated in pixel_ring.py, so you don't need to initialize it again.</p>
+<p>```python</p>
+<h1 id="example-usage_5">Example usage</h1>
+<p>from respeaker import pixel_ring</p>
+<p>pixel_ring.listen()
+time.sleep(3)
+pixel_ring.wait()
+time.sleep(3)
+for level in range(2, 8):
+    pixel_ring.speak(level, 0)
+    time.sleep(1)
+pixel_ring.set_volume(4)
+time.sleep(3)</p>
+</li>
+</ol>
+<pre><code>
+- **def off(self):**
+
+    Set pixel leds all off.
+
+    ```python
+    #Example usage
+    pixel_ring.off()
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def listen(self, direction=None):</strong></p>
+<p>Set pixel leds to <code>listen</code> mode, which makes leds all green.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>direction</em> - when direction is None, send <code>self.write(0, [7, 0, 0, 0])</code> and while direction is not None, send <code>self.write(0, [2, 0, direction &amp; 0xFF, (direction &gt;&gt; 8) &amp; 0xFF])</code></p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_6">Example usage</h1>
+<p>pixel_ring.listen()</p>
+</li>
+</ul>
+<pre><code>
+- **def wait(self):**
+
+    Set pixel leds to `wait` mode, which makes three leds green and running in circle.
+
+    ```python
+    #Example usage
+    pixel_ring.wait()
+</code></pre>
+
+<ul>
+<li>
+<p><strong>def set_color(self, rgb=None, r=0, g=0, b=0):</strong></p>
+<p>Set specific color to all pixel leds.</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>rgb</em> - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow</p>
+<p><em>r</em> - color codes of red, from 0 to 255 or 0x00 to 0xff</p>
+<p><em>g</em> - color codes of green, from 0 to 255 or 0x00 to 0xff</p>
+<p><em>b</em> - color codes of blue, from 0 to 255 or 0x00 to 0xff</p>
+</li>
+</ul>
+<p>```python</p>
+<h1 id="example-usage_7">Example usage</h1>
+<p>pixel_ring.set_color(rgb=0x505000)
+time.sleep(3)
+pixel_ring.set_color(r=150, g=100, b=20)
+```</p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../ReSpeakerArduinoLibrary/" class="btn btn-neutral" title="ReSpeaker Arduino Library"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>© 2017 Digitwings, India</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/d34dman/get_started_with_respeaker.git" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ReSpeakerArduinoLibrary/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>

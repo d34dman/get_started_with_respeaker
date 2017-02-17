@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="D34dMan">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>ReSpeaker Arduino Library - Respeaker - Getting Started</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "ReSpeaker Arduino Library";
+    var mkdocs_page_input_path = "ReSpeakerArduinoLibrary.md";
+    var mkdocs_page_url = "/ReSpeakerArduinoLibrary/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> Respeaker - Getting Started</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../Introduction/">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../QuickStart/">Quick Start</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ProgrammingGuide/">Programming guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">ReSpeaker Arduino Library</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#respeaker-arduino-library">ReSpeaker Arduino Library</a></li>
+                
+                    <li><a class="toctree-l4" href="#class-respeaker">class ReSpeaker</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../ReSpeakerPythonAPI/">ReSpeaker Python API</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Respeaker - Getting Started</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>ReSpeaker Arduino Library</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/d34dman/get_started_with_respeaker.git/edit/master/ReSpeakerArduinoLibrary.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="respeaker-arduino-library">ReSpeaker Arduino Library</h1>
+<p><a href="https://github.com/respeaker/respeaker_arduino_library">ReSpeaker Arudino Library</a> provides the following features: </p>
+<ul>
+<li>Supported capacitive touch sensing</li>
+<li>Implemented WS2812 RGB LED driver</li>
+<li>Built USB to Serial bridge and SPI bridge between - Arduino (ATmega32U4) and linux based OpenWrt (MT7688)</li>
+</ul>
+<h2 id="class-respeaker">class ReSpeaker</h2>
+<ul>
+<li>
+<p><strong>void begin(int touch=1, int pixels=1, int spi=1);</strong></p>
+<p>Setup touch buttons, full color pixels and spi bridge</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>touch</em> - 1-enable touch buttons, 0-disable</p>
+<p><em>pixeld</em> - 1-enable pixels, 0-disable</p>
+<p><em>spi</em> - 1-enable spi bridge, 0-disable</p>
+</li>
+</ul>
+<p>```C++
+//Example usage
+void setup() {
+  respeaker.begin();
+  }</p>
+</li>
+</ul>
+<pre><code>
+- **void play(const char \*name);**
+
+    Play music file on sd card, support wav &amp; mp3
+
+    - **Parameters:**
+
+        *name* - music file without path
+
+    ```C++
+    //Example usage
+    respeaker.play(&quot;hi.wav&quot;);
+</code></pre>
+
+<ul>
+<li>
+<p><strong>void exec(const char *cmd);</strong></p>
+<p>Execute a shell command</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>cmd</em> - command to be executed</p>
+</li>
+</ul>
+<p>```C++
+//Example usage
+respeaker.exec("python example.py");</p>
+</li>
+</ul>
+<pre><code>
+- **uint16\_t read\_touch(uint8\_t id);**
+
+    Charge a touch button's capacity, read the charging time
+
+    - **Parameters:**
+
+        *id* - the id of the touch button
+
+    - **Return:** measurement value
+
+    ```C++
+    //Example usage
+    uint8_t mytouchsensor1 = 1;
+    if (respeaker.read_touch(mytouchsensor1) &gt;= 100) {
+        //do something here
+      }
+</code></pre>
+
+<ul>
+<li>
+<p><strong>uint16_t detect_touch();</strong></p>
+<p>Detect all touch buttons's status</p>
+<ul>
+<li><strong>Return:</strong> all the touch buttons' status in bit. </li>
+</ul>
+<p><code>C++
+//Example usage
+uint16_t buttonstatus = 0;
+buttonstatus = respeaker.detect_touch();
+if (buttonstatus == 0xf0) {
+    //do something here
+}</code></p>
+</li>
+<li>
+<p><strong>void attach_touch_handler(void (*handler)(uint8_t id, uint8_t event));</strong></p>
+<p>Attach an interrupt handler which will be called when a touch event happens</p>
+<p><code>C++
+//Example usage
+respeaker.attach_touch_handler(touch_event);  // add touch event handler</code></p>
+</li>
+<li>
+<p><strong>void attach_spi_handler(void (*handler)(uint8_t addr, uint8_t *data, uint8_t len));</strong>     </p>
+<p>Attach an interrupt handler which will be called when a spi packet is received</p>
+<p><code>C++
+//Example usage
+respeaker.attach_spi_handler(spi_event);</code></p>
+</li>
+<li>
+<p><strong>void attach_spi_raw_handler(void (*handler)(uint8_t data));</strong> </p>
+<p>Attach an interrupt handler which will be called when a single byte is received from spi</p>
+<p><code>C++
+//Example usage
+respeaker.attach_spi_raw_handler(spi_event);</code></p>
+</li>
+<li>
+<p><strong>Pixels &amp;pixels();</strong></p>
+<p>Get the Pixels reference of the 12 pixels on respeaker</p>
+<ul>
+<li><strong>Return:</strong> Pixels reference </li>
+</ul>
+<p><code>C++
+//Example usage
+Pixels *pixels;
+pixels = &amp;respeaker.pixels();</code></p>
+</li>
+<li>
+<p><strong>void Pixels::set_color(uint32_t rgb);</strong></p>
+<p>Set color of all pixels(12)</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>rgb</em> - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow</p>
+</li>
+</ul>
+<p><code>C++
+//Example usage
+pixels-&gt;set_color(Pixels::RGB(0xff, 0, 0x7f));
+pixels-&gt;update();</code></p>
+</li>
+<li>
+<p><strong>void Pixels::set_color(uint16_t index, uint32_t rgb);</strong></p>
+<p>Set color of one pixel</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>index</em> - the index of pixel</p>
+<p><em>rgb</em> - hex color codes, for example, 0xff0000 means red and 0xffff00 means yellow</p>
+</li>
+</ul>
+<p><code>C++
+//Example usage
+for (int i = 0; i &lt; PIXELS_NUM; i++) {
+    pixels-&gt;set_color(i, Pixels::RGB(0, 0, i * 255 / (PIXELS_NUM - 1)));
+  }
+pixels-&gt;update();</code></p>
+</li>
+<li>
+<p><strong>void Pixels::set_color(uint16_t index, uint8_t r, uint8_t g, uint8_t b);</strong></p>
+<p>Set color of one pixel</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>index</em> - the index of pixel</p>
+<p><em>r</em> - color codes of red, from 0 to 255 or 0x00 to 0xff</p>
+<p><em>g</em> - color codes of green, from 0 to 255 or 0x00 to 0xff</p>
+<p><em>b</em> - color codes of blue, from 0 to 255 or 0x00 to 0xff</p>
+</li>
+</ul>
+<p><code>C++
+//Example usage
+for (int i = 0; i &lt; PIXELS_NUM; i++) {
+    pixels-&gt;set_color(i, 0, 0, i * 255 / (PIXELS_NUM - 1));
+  }
+pixels-&gt;update();</code></p>
+</li>
+<li>
+<p><strong>void Pixels::update();</strong></p>
+<p>Update color code to all pixels and light them up</p>
+</li>
+<li>
+<p><strong>void Pixels::clear();</strong></p>
+<p>Leave all the pixels off</p>
+<p><code>C++
+//Example usage
+pixels-&gt;clear();</code></p>
+</li>
+<li>
+<p><strong>void Pixels::blink(uint32_t px_value, uint8_t time);</strong></p>
+<p>Set all the pixels blink</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>px_value</em> - hex rgb color codes</p>
+<p><em>time</em> -    delay time </p>
+</li>
+</ul>
+<p><code>C++
+//Example usage
+pixels-&gt;blink(0xff00ff, 500);</code></p>
+</li>
+<li>
+<p><strong>void Pixels::blink(uint32_t px_value, uint8_t time, uint16_t index);</strong></p>
+<p>Set one pixel blink</p>
+<ul>
+<li>
+<p><strong>Parameters:</strong></p>
+<p><em>px_value</em> - hex rgb color codes</p>
+<p><em>time</em> -    delay time </p>
+<p><em>index</em> - the index of pixel</p>
+</li>
+</ul>
+<p><code>C++
+//Example usage
+for (int i = 0; i &lt; PIXELS_NUM; i++) {
+    pixels-&gt;blink(0xff00ff, 500, i);
+  }</code></p>
+</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ReSpeakerPythonAPI/" class="btn btn-neutral float-right" title="ReSpeaker Python API">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ProgrammingGuide/" class="btn btn-neutral" title="Programming guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>© 2017 Digitwings, India</p>
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+    
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/d34dman/get_started_with_respeaker.git" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../ProgrammingGuide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../ReSpeakerPythonAPI/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script src="../js/theme.js"></script>
+
+</body>
+</html>
