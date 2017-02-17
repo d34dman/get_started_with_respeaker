@@ -1,0 +1,18 @@
+site_name: Respeaker - Getting Started
+theme: readthedocs
+site_description: "Respeaker - Getting Started"
+site_author: "D34dMan"
+copyright: "© 2017 Digitwings, India"
+repo_url: https://github.com/d34dman/get_started_with_respeaker.git
+edit_uri: edit/master/
+repo_name: GitHub
+markdown_extensions:
+  - admonition
+
+pages:
+    - index.md
+    - 'Introduction' : Introduction.md
+    - 'Quick Start' : QuickStart.md
+    - 'Programming guide' : ProgrammingGuide.md
+    - 'ReSpeaker Arduino Library' : ReSpeakerArduinoLibrary.md
+    - 'ReSpeaker Python API' : ReSpeakerPythonAPI.md
