@@ -1,8 +1,8 @@
 site_name: Respeaker - Getting Started
 theme: readthedocs
 site_description: "Respeaker - Getting Started"
-site_author: "D34dMan"
-copyright: "© 2017 Digitwings, India"
+site_author: "Seed"
+copyright: "Copyright © Seeedstudio 2016"
 repo_url: https://github.com/d34dman/get_started_with_respeaker
 edit_uri: blob/master/docs/
 repo_name: GitHub
